@@ -11,6 +11,8 @@
 <wo:submit action = "$createNewMovie" />
 </wo:form>
 
+
+
 <table border="1"><tr><th>Title</th><th>ReleaseDate</th></tr>
 <wo:repetition  list = "$allMovies" item="$currentMovie"><tr><td><wo:string value="$currentMovie.title" /></td><td><wo:string value="$currentMovie.releaseDate" /></td></tr></wo:repetition>
 
