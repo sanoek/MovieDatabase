@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+	<head>
+		<title>Untitled</title>
+	</head>
+	<body>
+<wo:form>
+<table border="1"><tr><th>Name</th><td><wo:textField value = "$newMovieTitle"/></td></tr>
+<tr><th>ReleaseDate (tt.mm.yyyy)</th><td><wo:textField value = "$newMovieReleaseDate" dateformat = "%d.%m.%y"/></td></tr>
+</table>
+<wo:submit action = "$createNewMovie" />
+</wo:form>
+
+<table border="1"><tr><th>Title</th><th>ReleaseDate</th></tr>
+<wo:repetition  list = "$allMovies" item="$currentMovie"><tr><td><wo:string value="$currentMovie.title" /></td><td><wo:string value="$currentMovie.releaseDate" /></td></tr></wo:repetition>
+
+
+</table>
+
+	</body>
+</html>
