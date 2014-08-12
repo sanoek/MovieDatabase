@@ -7,12 +7,15 @@ import com.webobjects.appserver.WOActionResults;
 import com.dd.moviedatabase.data.Movie;
 import com.webobjects.foundation.NSArray;
 import com.webobjects.foundation.NSTimestamp;
+import com.dd.moviedatabase.data.Director;
 
 public class Main extends ERXComponent {
 	private String greetingName;
 	private Movie currentMovie;
 	private String newMovieTitle;
 	private NSTimestamp newMovieReleaseDate;
+	private Director currentDirector;
+	private Director newMovieDirector;
 
 	public Main(WOContext context) {
 		super(context);
@@ -86,7 +89,43 @@ public class Main extends ERXComponent {
 	public WOActionResults createNewMovie() {
 		Movie newMovie = Movie.createMovie(session().defaultEditingContext(), newMovieTitle());
 		newMovie.setReleaseDate(newMovieReleaseDate());
+		
+		//newMovie.setDirector(newMovieDirector);
+		
+		newMovie.setDirectorRelationship(newMovieDirector);
 		session().defaultEditingContext().saveChanges();
 		return null;
+	}
+
+	public NSArray<Director> allDirector() {
+		return Director.fetchAllDirectors(session().defaultEditingContext());
+	}
+
+	/**
+	 * @return the currentDirector
+	 */
+	public Director currentDirector() {
+		return currentDirector;
+	}
+
+	/**
+	 * @param currentDirector the currentDirector to set
+	 */
+	public void setCurrentDirector(Director currentDirector) {
+		this.currentDirector = currentDirector;
+	}
+
+	/**
+	 * @return the newMovieDirector
+	 */
+	public Director newMovieDirector() {
+		return newMovieDirector;
+	}
+
+	/**
+	 * @param newMovieDirector the newMovieDirector to set
+	 */
+	public void setNewMovieDirector(Director newMovieDirector) {
+		this.newMovieDirector = newMovieDirector;
 	}
 }

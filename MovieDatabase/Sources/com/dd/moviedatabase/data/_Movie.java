@@ -19,11 +19,13 @@ public abstract class _Movie extends  ERXGenericRecord {
   public static final ERXKey<NSTimestamp> RELEASE_DATE = new ERXKey<NSTimestamp>("releaseDate");
   public static final ERXKey<String> TITLE = new ERXKey<String>("title");
   // Relationship Keys
+  public static final ERXKey<com.dd.moviedatabase.data.Director> DIRECTOR = new ERXKey<com.dd.moviedatabase.data.Director>("director");
 
   // Attributes
   public static final String RELEASE_DATE_KEY = RELEASE_DATE.key();
   public static final String TITLE_KEY = TITLE.key();
   // Relationships
+  public static final String DIRECTOR_KEY = DIRECTOR.key();
 
   private static Logger LOG = Logger.getLogger(_Movie.class);
 
@@ -57,6 +59,31 @@ public abstract class _Movie extends  ERXGenericRecord {
     takeStoredValueForKey(value, _Movie.TITLE_KEY);
   }
 
+  public com.dd.moviedatabase.data.Director director() {
+    return (com.dd.moviedatabase.data.Director)storedValueForKey(_Movie.DIRECTOR_KEY);
+  }
+  
+  public void setDirector(com.dd.moviedatabase.data.Director value) {
+    takeStoredValueForKey(value, _Movie.DIRECTOR_KEY);
+  }
+
+  public void setDirectorRelationship(com.dd.moviedatabase.data.Director value) {
+    if (_Movie.LOG.isDebugEnabled()) {
+      _Movie.LOG.debug("updating director from " + director() + " to " + value);
+    }
+    if (er.extensions.eof.ERXGenericRecord.InverseRelationshipUpdater.updateInverseRelationships()) {
+    	setDirector(value);
+    }
+    else if (value == null) {
+    	com.dd.moviedatabase.data.Director oldValue = director();
+    	if (oldValue != null) {
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _Movie.DIRECTOR_KEY);
+      }
+    } else {
+    	addObjectToBothSidesOfRelationshipWithKey(value, _Movie.DIRECTOR_KEY);
+    }
+  }
+  
 
   public static Movie createMovie(EOEditingContext editingContext, String title
 ) {

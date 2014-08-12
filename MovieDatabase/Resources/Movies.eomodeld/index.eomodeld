@@ -2,7 +2,10 @@
     EOModelVersion = "2.1"; 
     adaptorName = JDBC; 
     connectionDictionary = {URL = "jdbc:FrontBase://127.0.0.1/Movies/user=_system"; }; 
-    entities = ({className = "com.dd.moviedatabase.data.Movie"; name = Movie; }); 
+    entities = (
+        {className = "com.dd.moviedatabase.data.Director"; name = Director; }, 
+        {className = "com.dd.moviedatabase.data.Movie"; name = Movie; }
+    ); 
     userInfo = {
         "_EntityModeler" = {
             activeDatabaseConfigName = Default; 

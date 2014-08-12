@@ -1,23 +1,29 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
 	<head>
-		<title>Untitled</title>
+		<title>Movies Editor</title>
 	</head>
-	<body>
+
+<body>
+	
 <wo:form>
-<table border="1"><tr><th>Name</th><td><wo:textField value = "$newMovieTitle"/></td></tr>
-<tr><th>ReleaseDate (tt.mm.yyyy)</th><td><wo:textField value = "$newMovieReleaseDate" dateformat = "%d.%m.%y"/></td></tr>
+<table border="1">
+<tr><th>Title</th><td><wo:textField value = "$newMovieTitle"/></td></tr>
+<tr><th>Release Date (tt.mm.yyyy)</th><td><wo:textField value = "$newMovieReleaseDate" dateformat = "%d.%m.%y"/></td></tr>
+<tr><th>Director</th><td><wo:popUpButton list = "$allDirector" item = "$currentDirector" selection = "$newMovieDirector" displayString = "$currentDirector.name"/></td>
+<th><wo:hyperlink pageName = "DirectorEditor">Director Editor</wo:hyperlink></th></tr>
 </table>
+
 <wo:submit action = "$createNewMovie" />
+
 </wo:form>
 
+<table border="1"><tr><th>Title</th><th>Release Date</th><th>Director</th></tr>
 
-
-<table border="1"><tr><th>Title</th><th>ReleaseDate</th></tr>
-<wo:repetition  list = "$allMovies" item="$currentMovie"><tr><td><wo:string value="$currentMovie.title" /></td><td><wo:string value="$currentMovie.releaseDate" /></td></tr></wo:repetition>
-
+<wo:repetition  list = "$allMovies" item="$currentMovie"><tr><td><wo:string value="$currentMovie.title" /></td><td><wo:string value="$currentMovie.releaseDate" /></td><td><wo:string value="$currentMovie.director.name" /></td></tr></wo:repetition>
 
 </table>
 
-	</body>
+</body>
+
 </html>

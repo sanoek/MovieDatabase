@@ -1,5 +1,11 @@
 {
     attributes = (
+        {
+            allowsNull = Y; 
+            columnName = directorID; 
+            name = directorID; 
+            prototypeName = id; 
+        }, 
         {allowsNull = N; name = id; prototypeName = id; }, 
         {
             allowsNull = Y; 
@@ -9,11 +15,20 @@
         }, 
         {columnName = title; name = title; prototypeName = varchar100; }
     ); 
-    attributesUsedForLocking = (id, releaseDate, title); 
+    attributesUsedForLocking = (directorID, id, releaseDate, title); 
     className = "com.dd.moviedatabase.data.Movie"; 
-    classProperties = (releaseDate, title); 
+    classProperties = (director, releaseDate, title); 
     externalName = Movie; 
     fetchSpecificationDictionary = {}; 
     name = Movie; 
     primaryKeyAttributes = (id); 
+    relationships = (
+        {
+            destination = Director; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = directorID; }); 
+            name = director; 
+        }
+    ); 
 }
