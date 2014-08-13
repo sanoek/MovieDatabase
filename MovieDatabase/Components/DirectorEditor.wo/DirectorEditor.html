@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+	<head>
+		<title>Director Editor</title>
+	</head>
+	<body>
+	
+<wo:hyperlink pageName = "Main">Back to Movies Editor</wo:hyperlink>
+
+<wo:form>
+
+<table border="1">
+<tr><th>Name</th><td><wo:textField value = "$newDirectorName"/></td></tr>
+<tr><th>Birthday (tt.mm.yyyy)</th><td><wo:textField value = "$newDirectorBirthday" dateformat = "%d.%m.%y"/></td></tr>
+<tr><th>Nationality</th><td><wo:textField value = "$newDirectorNationality"/></td></tr>
+</table>
+
+<wo:submit action = "$createNewDirector" />
+
+</wo:form>
+
+<table border="1"><tr><th>Name</th><th>Birthday</th><th>Nationality</th><th>Action</th><th>Action</th></tr>
+
+<wo:repetition  list = "$allDirector" item = "$currentDirector"><tr><td><wo:string value="$currentDirector.name" /></td><td><wo:string value="$currentDirector.birthday" /></td><td><wo:string value="$currentDirector.nationality" /></td><td><wo:hyperlink action = "$changeCurrentDirectorData">select</wo:hyperlink></td><td><wo:hyperlink action = "$deleteCurrentDirector">delete</wo:hyperlink></td></tr></wo:repetition>
+
+</table>
+
+</body>
+
+</html>

@@ -128,4 +128,12 @@ public class Main extends ERXComponent {
 	public void setNewMovieDirector(Director newMovieDirector) {
 		this.newMovieDirector = newMovieDirector;
 	}
+
+	public WOActionResults deleteCurrentMovie() {
+		
+		currentMovie().delete();
+		session().defaultEditingContext().saveChanges();
+		
+		return null;
+	}
 }

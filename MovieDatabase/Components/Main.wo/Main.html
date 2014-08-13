@@ -20,7 +20,7 @@
 
 <table border="1"><tr><th>Title</th><th>Release Date</th><th>Director</th></tr>
 
-<wo:repetition  list = "$allMovies" item="$currentMovie"><tr><td><wo:string value="$currentMovie.title" /></td><td><wo:string value="$currentMovie.releaseDate" /></td><td><wo:string value="$currentMovie.director.name" /></td></tr></wo:repetition>
+<wo:repetition  list = "$allMovies" item="$currentMovie"><tr><td><wo:string value="$currentMovie.title" /></td><td><wo:string value="$currentMovie.releaseDate" /></td><td><wo:string value="$currentMovie.director.name" /></td><td><wo:hyperlink action = "$deleteCurrentMovie">delete</wo:hyperlink></td></tr></wo:repetition>
 
 </table>
 

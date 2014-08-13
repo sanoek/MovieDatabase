@@ -1,0 +1,34 @@
+{
+    attributes = (
+        {
+            allowsNull = Y; 
+            columnName = birthday; 
+            name = birthday; 
+            prototypeName = date; 
+        }, 
+        {allowsNull = N; name = id; prototypeName = id; }, 
+        {allowsNull = Y; columnName = name; name = name; prototypeName = varchar255; }, 
+        {
+            allowsNull = Y; 
+            columnName = nationality; 
+            name = nationality; 
+            prototypeName = varchar100; 
+        }
+    ); 
+    attributesUsedForLocking = (birthday, id, name, nationality); 
+    className = "com.dd.moviedatabase.data.Director"; 
+    classProperties = (birthday, movies, name, nationality); 
+    externalName = Director; 
+    fetchSpecificationDictionary = {}; 
+    name = Director; 
+    primaryKeyAttributes = (id); 
+    relationships = (
+        {
+            destination = Movie; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = directorID; sourceAttribute = id; }); 
+            name = movies; 
+        }
+    ); 
+}

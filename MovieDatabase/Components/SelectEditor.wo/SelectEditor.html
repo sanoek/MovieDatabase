@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+	<head>
+		<title>SelectEditor</title>
+	</head>
+<body>
+
+<wo:form>
+
+<table border="1">
+
+<tr><th>Name</th><td><wo:textField value = "$selectedDirector.name"/></td></tr>
+<tr><th>Birthday (tt.mm.yyyy)</th><td><wo:textField value = "$selectedDirector.birthday" dateformat = "%d.%m.%y"/></td></tr>
+<tr><th>Nationality</th><td><wo:textField value = "$selectedDirector.nationality"/></td></tr>
+
+</table>
+
+<wo:submit action = "$changeSelectedDirectorData" />
+
+</wo:form>
+
+<wo:hyperlink pageName = "DirectorEditor">Back to Director Editor</wo:hyperlink>
+
+</body>
+
+</html>
