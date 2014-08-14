@@ -1,7 +1,5 @@
 package com.dd.moviedatabase.components;
 
-import java.util.Date;
-
 import com.dd.moviedatabase.data.Director;
 import com.webobjects.appserver.WOActionResults;
 import com.webobjects.appserver.WOContext;
@@ -12,6 +10,7 @@ import er.extensions.components.ERXComponent;
 public class SelectEditor extends ERXComponent {
 
 	private Director selectedDirector;
+	
 
 	public SelectEditor(WOContext context) {
         super(context);
@@ -20,13 +19,21 @@ public class SelectEditor extends ERXComponent {
 
 	public WOActionResults changeSelectedDirectorData() {
 		
-		selectedDirector.setName("Test");
-		selectedDirector.setBirthday(new NSTimestamp());
-		selectedDirector.setNationality("aus Russland");
+		selectedDirector.setName(selectedDirector.name());
+		selectedDirector.setBirthday(selectedDirector.birthday());
+		selectedDirector.setNationality(selectedDirector.nationality());
+		
+//		selectedDirector.setName("Test");
+//		selectedDirector.setBirthday(new NSTimestamp());
+//		selectedDirector.setNationality("aus Russland");
 		
 		session().defaultEditingContext().saveChanges();
 		
-		return null;
+		DirectorEditor nextPage = pageWithName(DirectorEditor.class);
+	
+		return nextPage;
+		
+//		return null;
 	}
 
 	/**
@@ -42,4 +49,5 @@ public class SelectEditor extends ERXComponent {
 	public void setSelectedDirector(Director selectedDirector) {
 		this.selectedDirector = selectedDirector;
 	}
+
 }
